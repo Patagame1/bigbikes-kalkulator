@@ -1,0 +1,5 @@
+{
+  "catalogUrl": "./catalog/catalog.json",
+  "refreshEveryHours": 12,
+  "requestTimeoutMs": 8000
+}

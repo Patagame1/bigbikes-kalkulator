@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BigBikes Suspension Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "revision", "catalogVersion", "publishedAt", "makes", "models"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "revision": { "type": "integer", "minimum": 1 },
+    "catalogVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "publishedAt": { "type": "string", "format": "date-time", "pattern": "Z$" },
+    "makes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["VOGE", "ZONTES", "KOVE"] },
+      "allOf": [
+        { "contains": { "const": "VOGE" } },
+        { "contains": { "const": "ZONTES" } },
+        { "contains": { "const": "KOVE" } }
+      ]
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "make", "model", "year", "status", "sources", "settings"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "make": { "enum": ["VOGE", "ZONTES", "KOVE"] },
+          "model": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "year": { "anyOf": [{ "type": "integer", "minimum": 1900, "maximum": 2100 }, { "type": "null" }] },
+          "status": { "enum": ["verified", "unverified"] },
+          "notes": { "type": "string", "maxLength": 500 },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "title", "url", "retrievedAt"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                "title": { "type": "string", "minLength": 1, "maxLength": 160 },
+                "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+                "retrievedAt": { "type": "string", "format": "date-time", "pattern": "Z$" },
+                "notes": { "type": "string", "maxLength": 500 }
+              }
+            }
+          },
+          "specifications": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "side", "name", "value", "sourceIds"],
+              "properties": {
+                "kind": { "const": "travel" },
+                "side": { "enum": ["front", "rear"] },
+                "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+                "value": { "type": "number", "exclusiveMinimum": 0 },
+                "unit": { "type": "string", "maxLength": 40 },
+                "sourceIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+              }
+            }
+          },
+          "settings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["side", "name", "value", "sourceIds"],
+              "properties": {
+                "side": { "enum": ["front", "rear", "general"] },
+                "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+                "value": { "oneOf": [{ "type": "number" }, { "type": "string", "minLength": 1, "maxLength": 500 }] },
+                "unit": { "type": "string", "maxLength": 40 },
+                "context": { "type": "string", "maxLength": 500 },
+                "sourceIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "verified" } } },
+            "then": {
+              "properties": { "settings": { "minItems": 1 }, "sources": { "minItems": 1 } }
+            },
+            "else": {
+              "properties": { "settings": { "maxItems": 0 } }
+            }
+          },
+          {
+            "if": { "properties": { "year": { "const": null } } },
+            "then": {
+              "properties": {
+                "status": { "const": "unverified" },
+                "settings": { "maxItems": 0 },
+                "specifications": { "maxItems": 0 }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
