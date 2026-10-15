@@ -54,6 +54,7 @@ for (const model of catalog.models || []) {
 
   const sourceIds = new Set();
   const sourcesById = new Map();
+  const clickProfileMatches = new Map();
   for (const source of model.sources) {
     requireValue(isObject(source), 'source must be an object on ' + id);
     if (!isObject(source)) continue;
@@ -76,6 +77,22 @@ for (const model of catalog.models || []) {
     requireValue(setting.unit === undefined || typeof setting.unit === 'string', 'setting unit must be a string on ' + id);
     requireValue(setting.context === undefined || (typeof setting.context === 'string' && setting.context.length <= 500), 'setting context must be a string up to 500 characters on ' + id);
     requireValue(Array.isArray(setting.sourceIds) && setting.sourceIds.length > 0 && setting.sourceIds.every((sourceId) => sourceIds.has(sourceId)), 'every setting must reference an existing source on ' + id);
+    if (setting.clickGuide !== undefined) {
+      const guide = setting.clickGuide;
+      requireValue(isObject(guide), 'clickGuide must be an object on ' + id);
+      if (isObject(guide)) {
+        requireValue(typeof guide.id === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.id), 'invalid clickGuide id on ' + id);
+        requireValue(typeof guide.label === 'string' && guide.label.trim().length > 0 && guide.label.length <= 100, 'invalid clickGuide label on ' + id);
+        requireValue(Number.isInteger(guide.baselineClicks) && guide.baselineClicks >= 0 && guide.baselineClicks <= 1000, 'invalid clickGuide baseline on ' + id);
+        requireValue(['hard-stop', 'left-stop', 'right-stop'].includes(guide.reference), 'invalid clickGuide reference on ' + id);
+        requireValue(['clockwise', 'counterclockwise'].includes(guide.countDirection), 'invalid clickGuide direction on ' + id);
+        requireValue(guide.loadProfileMatch === undefined || ['solo-no-luggage', 'solo-three-cases', 'two-riders-three-cases'].includes(guide.loadProfileMatch), 'invalid automatic load-profile rule on ' + id);
+        const profileKey = guide.profile || 'default';
+        const matchKey = guide.loadProfileMatch || '';
+        requireValue(!clickProfileMatches.has(profileKey) || clickProfileMatches.get(profileKey) === matchKey, 'inconsistent automatic load-profile rule for ' + profileKey + ' on ' + id);
+        clickProfileMatches.set(profileKey, matchKey);
+      }
+    }
     const settingSources = (setting.sourceIds || []).map((sourceId) => sourcesById.get(sourceId)).filter(Boolean);
     requireValue(settingSources.length > 0 && settingSources.every((source) => {
       try {

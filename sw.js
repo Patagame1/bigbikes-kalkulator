@@ -1,5 +1,5 @@
 /* Bump SHELL_CACHE when app shell files change. Catalog data is validated and stored by app.js. */
-const SHELL_CACHE = 'bigbikes-shell-v10';
+const SHELL_CACHE = 'bigbikes-shell-v15';
 const APP_SHELL = [
   './',
   './index.html',
@@ -34,8 +34,24 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  if (url.pathname.endsWith('/sw.js')) {
+    event.respondWith(fetch(request, { cache: 'no-store' }).catch(() => caches.match(request)));
+    return;
+  }
+
   if (request.mode === 'navigate') {
     event.respondWith(fetch(request).catch(() => caches.match('./index.html')));
+    return;
+  }
+
+  if (request.destination === 'script' || request.destination === 'style') {
+    event.respondWith(fetch(request).then((response) => {
+      if (response.ok && response.type === 'basic') {
+        const copy = response.clone();
+        caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy));
+      }
+      return response;
+    }).catch(() => caches.match(request)));
     return;
   }
 

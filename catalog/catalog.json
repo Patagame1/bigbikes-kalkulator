@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "revision": 9,
-  "catalogVersion": "1.5.0",
-  "publishedAt": "2026-10-15T18:31:09Z",
+  "revision": 11,
+  "catalogVersion": "1.7.0",
+  "publishedAt": "2026-10-15T19:36:05Z",
   "makes": [
     "VOGE",
     "ZONTES",
@@ -14,8 +14,8 @@
       "make": "KOVE",
       "model": "800X Pro",
       "year": 2026,
-      "status": "unverified",
-      "notes": "Producent potwierdza skok 240/240 mm. Nie publikujemy klików ani bazowych nastaw bez ich sprawdzenia w instrukcji dla właściwej wersji CN4/E5+.",
+      "status": "verified",
+      "notes": "Nastawy standardowe KOVE 800X Pro w wersji Pro. Licz od pozycji maksymalnego tłumienia zgodnie z instrukcją; przed regulacją sprawdź, czy osprzęt motocykla odpowiada wersji opisanej w instrukcji.",
       "sources": [
         {
           "id": "kove-800x-pro-2026-spec",
@@ -28,8 +28,8 @@
           "id": "kove-800x-pro-2026-manual",
           "title": "KOVE · instrukcja 800X Pro · wydanie 2026",
           "url": "https://www.kovemoto.com/wp-content/uploads/2026/08/800X-PRO-2026-USER-MANUAL-2026.03.pdf",
-          "retrievedAt": "2026-10-15T18:31:09Z",
-          "notes": "Instrukcja udostępniona w serwisie producenta KOVE. Nastawy pozostają nieopublikowane do czasu sprawdzenia dokładnej treści i zgodności z wersją sprzedawaną w Polsce."
+          "retrievedAt": "2026-10-15T19:12:00Z",
+          "notes": "Instrukcja 800X Pro 2026 opublikowana na oficjalnej stronie serwisowej producenta. Sekcja regulacji zawieszenia: przód i tył, nastawa standardowa, liczona od maksymalnego tłumienia."
         }
       ],
       "specifications": [
@@ -54,7 +54,84 @@
           ]
         }
       ],
-      "settings": []
+      "settings": [
+        {
+          "side": "front",
+          "name": "Kompresja · wersja Pro",
+          "value": "12 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 12 klików. Zakres regulatora: 23 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "front-compression",
+            "label": "Przód · kompresja",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 12,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 25
+          }
+        },
+        {
+          "side": "front",
+          "name": "Odbicie · wersja Pro",
+          "value": "18 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 18 klików. Zakres regulatora: 24 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "front-rebound",
+            "label": "Przód · odbicie",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 18,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 26
+          }
+        },
+        {
+          "side": "rear",
+          "name": "Kompresja · amortyzator",
+          "value": "10 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 10 klików. Zakres regulatora: 20 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "rear-compression",
+            "label": "Tył · kompresja",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 10,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 22
+          }
+        },
+        {
+          "side": "rear",
+          "name": "Odbicie · amortyzator",
+          "value": "10 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 10 klików. Zakres regulatora: 23 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "rear-rebound",
+            "label": "Tył · odbicie",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 10,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 25
+          }
+        }
+      ]
     },
     {
       "id": "kove-800x-touring-2026",
@@ -171,6 +248,7 @@
           "value": 6,
           "unit": "klików",
           "context": "Pokrętło hydrauliczne nr 1: od lewego ogranicznika w prawo. Instrukcja określa to jako pozycję seryjną.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "solo", "profileLabel": "Solo · bez bagażu", "loadProfileMatch": "solo-no-luggage", "baselineClicks": 6, "tolerance": 0, "reference": "left-stop", "countDirection": "clockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]
@@ -181,6 +259,7 @@
           "value": "16 ± 1",
           "unit": "klików",
           "context": "Od lewego ogranicznika w prawo.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "solo-cases", "profileLabel": "Solo · trzy kufry", "loadProfileMatch": "solo-three-cases", "baselineClicks": 16, "tolerance": 1, "reference": "left-stop", "countDirection": "clockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]
@@ -191,6 +270,7 @@
           "value": "21 ± 1",
           "unit": "klików",
           "context": "Od lewego ogranicznika w prawo.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "two-riders-cases", "profileLabel": "Kierowca + pasażer · trzy kufry", "loadProfileMatch": "two-riders-three-cases", "baselineClicks": 21, "tolerance": 1, "reference": "left-stop", "countDirection": "clockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]
@@ -201,6 +281,7 @@
           "value": 18,
           "unit": "klików",
           "context": "Od prawego ogranicznika w lewo; pozycja seryjna. W lewo szybszy powrót, w prawo wolniejszy.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "solo", "profileLabel": "Solo · bez bagażu", "loadProfileMatch": "solo-no-luggage", "baselineClicks": 18, "tolerance": 0, "reference": "right-stop", "countDirection": "counterclockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]
@@ -211,6 +292,7 @@
           "value": "16 ± 1",
           "unit": "klików",
           "context": "Od prawego ogranicznika w lewo.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "solo-cases", "profileLabel": "Solo · trzy kufry", "loadProfileMatch": "solo-three-cases", "baselineClicks": 16, "tolerance": 1, "reference": "right-stop", "countDirection": "counterclockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]
@@ -221,6 +303,7 @@
           "value": "14 ± 1",
           "unit": "klików",
           "context": "Od prawego ogranicznika w lewo.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "two-riders-cases", "profileLabel": "Kierowca + pasażer · trzy kufry", "loadProfileMatch": "two-riders-three-cases", "baselineClicks": 14, "tolerance": 1, "reference": "right-stop", "countDirection": "counterclockwise" },
           "sourceIds": [
             "voge-900-dsx-e5-plus-manual"
           ]

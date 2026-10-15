@@ -31,6 +31,8 @@ Format i przykładowe dane są w catalog/catalog.json; walidator schematu to cat
 - Kalkulator pozwala opcjonalnie wpisać cel ugięcia odczytany z instrukcji. Porównuje z nim wynik i wskazuje kierunek zmiany napięcia wstępnego, ale nie wylicza liczby obrotów ani klików.
 - Obliczenie kierunku jest ogólną relacją: większe napięcie wstępne zmniejsza ugięcie, mniejsze napięcie zwiększa ugięcie. Użytkownik powinien stosować się do zakresu i procedury w instrukcji danego motocykla.
 
+Pole `settings[].clickGuide.loadProfileMatch` jest opcjonalne. Pozwala aplikacji samodzielnie wybrać tylko dokładny wariant obciążenia jednoznacznie opisany przez producenta: `solo-no-luggage` (solo i 0 kg bagażu), `solo-three-cases` (solo i trzy kufry) albo `two-riders-three-cases` (kierowca, pasażer i trzy kufry). Nie dodawaj reguły na podstawie samej masy lub wzrostu; te dane są kontekstem dla klienta, a nie przelicznikiem klików. Jeśli instrukcja nie obejmuje wpisanego połączenia pasażera i bagażu, aplikacja nie pokazuje dopasowanej nastawy.
+
 Do źródeł wybieraj dokumentację producenta, instrukcję serwisową lub inne źródło, które bezpośrednio potwierdza konkretną wartość dla danego rocznika. Nie przenoś ustawień pomiędzy modelami ani rocznikami bez źródła. Karty sprzedażowe nie są źródłem fabrycznych klików ani zaleceń nastaw.
 
 ## Publikacja i walidacja

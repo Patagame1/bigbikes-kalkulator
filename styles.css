@@ -114,8 +114,43 @@ h2 { margin-bottom: 0; font-size: clamp(28px, 3.1vw, 38px); line-height: 1.14; l
 .input-unit:focus-within { outline: 3px solid rgba(255,116,28,.35); outline-offset: 2px; border-color: var(--orange); }
 .input-unit input { height: 41px; border: 0; outline: 0; }
 .input-unit b { padding: 0 10px; color: #79817e; font: 10px var(--mono); }
+.load-profile { margin-top: 22px; padding: 17px 16px 14px; border: 1px solid #d8d9d2; border-left: 3px solid var(--orange); background: #fff; }
+.load-profile-heading .step-label { margin-bottom: 6px; }
+.load-profile-heading h3 { margin: 0; font-size: 17px; line-height: 1.3; letter-spacing: -.035em; }
+.load-profile-heading p { margin: 7px 0 13px; color: #69726f; font-size: 10px; line-height: 1.6; }
+.load-profile-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.load-field { min-width: 0; display: grid; gap: 6px; color: #353d3d; font-size: 10px; font-weight: 700; }
+.load-field input, .load-field select { width: 100%; height: 41px; padding: 0 10px; color: var(--ink); border: 1px solid #cbd0d2; border-radius: 3px; outline: 0; background-color: #fff; font-size: 11px; font-weight: 600; }
+.load-field input:focus, .load-field select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,116,28,.13); }
+.load-field input::placeholder { color: #a4aba8; font-size: 9px; font-weight: 500; }
+.load-field select { appearance: none; padding-right: 29px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23677170' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+.load-field .input-unit { height: 41px; }
+.load-field .input-unit input { height: 39px; }
+.passenger-toggle { grid-column: 1 / -1; min-height: 40px; display: flex; align-items: center; gap: 9px; padding: 9px 11px; color: #303a34; border: 1px solid #e0e1db; background: #f8f7f3; font-size: 10px; font-weight: 700; cursor: pointer; }
+.passenger-toggle input { width: 17px; height: 17px; margin: 0; accent-color: var(--orange-dark); }
+.load-summary { margin: 12px 0 0; padding: 10px 11px; color: #56645b; border-left: 2px solid #bcc8be; background: #f5f7f4; font-size: 9px; line-height: 1.6; }
+.load-summary[data-complete="true"] { color: #315e40; border-color: #78a488; background: var(--green-pale); }
 .form-divider { margin: 25px 0 14px; padding-top: 20px; border-top: 1px solid #e0e1db; }
 .form-divider h3 { margin-top: 7px; font-size: 15px; }
+.click-planner { margin-top: 24px; padding: 17px 16px 12px; border: 1px solid #d8d9d2; border-left: 3px solid var(--orange); background: #f8f7f3; }
+.click-planner-heading .step-label { margin-bottom: 6px; }
+.click-planner-heading h3 { margin: 0; font-size: 17px; letter-spacing: -.035em; }
+.click-planner-intro { margin: 7px 0 12px; color: #626c67; font-size: 10px; line-height: 1.6; }
+.click-planner-content { display: grid; gap: 8px; }
+.click-profile-field, .click-fields label { display: grid; gap: 5px; color: #48524d; font-size: 9px; font-weight: 700; }
+.click-profile-field { margin-bottom: 3px; }
+.click-profile-field select, .click-fields input { width: 100%; min-width: 0; height: 39px; padding: 0 10px; color: var(--ink); border: 1px solid #ccd1cd; border-radius: 3px; background: #fff; font-size: 11px; }
+.click-profile-field select:focus, .click-fields input:focus { border-color: var(--orange); outline: 3px solid rgba(255,116,28,.18); outline-offset: 1px; }
+.click-row { min-width: 0; padding: 11px 12px; border: 1px solid #e0e1db; background: #fff; }
+.click-row-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 9px; }
+.click-row-heading strong { color: #303a34; font-size: 10px; }
+.click-baseline { color: var(--green); font: 10px var(--mono); text-align: right; }
+.click-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.click-row[data-mode="manufacturer"] .click-fields { grid-template-columns: minmax(140px, .7fr); }
+.click-row-output { min-height: 16px; margin: 8px 0 0; color: #5f6c64; font-size: 9px; line-height: 1.5; }
+.click-row[data-mode="manufacturer"] .click-row-output { color: #315e40; }
+.click-manual-note { margin: 0; padding: 10px 11px; color: #6a6258; border-left: 2px solid #c5a16e; background: #f5f0e7; font-size: 9px; line-height: 1.6; }
+.click-planner-safety { margin: 10px 0 0; color: #808883; font-size: 8px; line-height: 1.55; }
 .calculate-button { width: 100%; margin-top: 21px; }
 .form-footnote { margin: 11px 0 0; color: #89908d; text-align: center; font-size: 9px; line-height: 1.55; }
 .target-field { margin-top: 14px; }
@@ -282,6 +317,9 @@ h2 { margin-bottom: 0; font-size: clamp(28px, 3.1vw, 38px); line-height: 1.14; l
   .vehicle-fields { grid-template-columns: 1fr 1fr; }
   .field-year { grid-column: 1 / -1; }
   .measurement-fields { gap: 13px 10px; }
+  .load-profile { padding: 14px 11px 12px; }
+  .load-profile-fields { gap: 10px; }
+  .load-field { font-size: 9px; }
   .field { font-size: 10px; }
   .field small { font-size: 8px; }
   .result-card { padding-inline: 12px; }
@@ -289,6 +327,12 @@ h2 { margin-bottom: 0; font-size: clamp(28px, 3.1vw, 38px); line-height: 1.14; l
   .result-metrics > div { padding: 10px 7px; }
   .result-metrics strong { font-size: 18px; }
   .result-metrics span, .result-metrics small { font-size: 8px; }
+  .click-planner { padding: 14px 11px 10px; }
+  .click-row { padding: 10px; }
+  .click-fields, .click-row[data-mode="manufacturer"] .click-fields { grid-template-columns: 1fr 1fr; }
+  .click-row[data-mode="manufacturer"] .click-fields { grid-template-columns: minmax(0, .8fr); }
+  .click-row-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .click-baseline { text-align: left; }
   .install-card { padding-inline: 17px; }
   .install-card ol { gap: 8px; }
 }

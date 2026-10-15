@@ -5,6 +5,7 @@
   const CONFIG_KEY = 'bigbikes.catalog.config.v1';
   const CHECK_KEY = 'bigbikes.catalog.last-check.v1';
   const PERSONAL_SETUP_KEY = 'bigbikes.personal-setup.v1';
+  const CLICK_SETUP_KEY = 'bigbikes.click-setup.v1';
   const DEFAULT_CONFIG = {
     catalogUrl: './catalog/catalog.json',
     refreshEveryHours: 12,
@@ -34,6 +35,18 @@
   const modelStatusTitle = document.querySelector('#model-status-title');
   const modelStatusCopy = document.querySelector('#model-status-copy');
   const modelDetails = document.querySelector('#model-details');
+  const clickPlannerIntro = document.querySelector('#click-planner-intro');
+  const clickPlannerContent = document.querySelector('#click-planner-content');
+  const riderWeightInput = document.querySelector('#rider-weight');
+  const riderHeightInput = document.querySelector('#rider-height');
+  const luggageWeightInput = document.querySelector('#luggage-weight');
+  const luggageCasesInput = document.querySelector('#luggage-cases');
+  const hasPassengerInput = document.querySelector('#has-passenger');
+  const passengerWeightInput = document.querySelector('#passenger-weight');
+  const passengerWeightField = document.querySelector('#passenger-weight-field');
+  const loadSummary = document.querySelector('#load-summary');
+  const riderLoadedLabel = document.querySelector('#rider-loaded-label');
+  const riderLoadedHelp = document.querySelector('#rider-loaded-help');
   const personalSetup = document.querySelector('#personal-setup');
   const personalSetupModel = document.querySelector('#personal-setup-model');
   const personalSetupMessage = document.querySelector('#personal-setup-message');
@@ -52,6 +65,7 @@
   let refreshPromise = null;
   let travelSelectionKey = '';
   let personalSetupLoadedKey = '';
+  let clickProfileOverride = 'automatic';
 
   function safeGet(key) {
     try { return localStorage.getItem(key); } catch { return null; }
@@ -113,6 +127,7 @@
           if (!Array.isArray(spec.sourceIds) || spec.sourceIds.length === 0 || spec.sourceIds.some((id) => !sourceIds.has(id))) throw new Error(`Każda specyfikacja musi wskazywać źródło (${model.id}).`);
         }
       }
+      const clickProfileMatches = new Map();
       for (const setting of model.settings) {
         if (!isPlainObject(setting) || !['front', 'rear', 'general'].includes(setting.side)) throw new Error(`Niepoprawny wpis nastawy (${model.id}).`);
         if (typeof setting.name !== 'string' || !setting.name.trim() || setting.name.length > 120 || !['string', 'number'].includes(typeof setting.value) || (typeof setting.value === 'string' && (!setting.value.trim() || setting.value.length > 500))) throw new Error(`Brak nazwy lub wartości nastawy (${model.id}).`);
@@ -120,6 +135,20 @@
         if (setting.unit !== undefined && (typeof setting.unit !== 'string' || setting.unit.length > 40)) throw new Error(`Niepoprawna jednostka nastawy (${model.id}).`);
         if (setting.context !== undefined && (typeof setting.context !== 'string' || setting.context.length > 500)) throw new Error(`Niepoprawny kontekst nastawy (${model.id}).`);
         if (!Array.isArray(setting.sourceIds) || setting.sourceIds.length === 0 || setting.sourceIds.some((id) => !sourceIds.has(id))) throw new Error(`Każda nastawa musi wskazywać źródło (${model.id}).`);
+        if (setting.clickGuide !== undefined) {
+          const guide = setting.clickGuide;
+          if (!isPlainObject(guide) || typeof guide.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.id) || typeof guide.label !== 'string' || !guide.label.trim() || guide.label.length > 100) throw new Error(`Niepoprawna instrukcja klików (${model.id}).`);
+          if (!Number.isInteger(guide.baselineClicks) || guide.baselineClicks < 0 || guide.baselineClicks > 1000 || !Number.isFinite(guide.tolerance ?? 0) || (guide.tolerance ?? 0) < 0 || (guide.tolerance ?? 0) > 20) throw new Error(`Niepoprawna nastawa bazowa w klikach (${model.id}).`);
+          if (!['hard-stop', 'left-stop', 'right-stop'].includes(guide.reference) || !['clockwise', 'counterclockwise'].includes(guide.countDirection)) throw new Error(`Niepoprawny punkt odniesienia klików (${model.id}).`);
+          if (guide.profile !== undefined && (typeof guide.profile !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.profile))) throw new Error(`Niepoprawny wariant obciążenia (${model.id}).`);
+          if (guide.profileLabel !== undefined && (typeof guide.profileLabel !== 'string' || !guide.profileLabel.trim() || guide.profileLabel.length > 100)) throw new Error(`Niepoprawna nazwa wariantu obciążenia (${model.id}).`);
+          if (guide.loadProfileMatch !== undefined && !['solo-no-luggage', 'solo-three-cases', 'two-riders-three-cases'].includes(guide.loadProfileMatch)) throw new Error(`Niepoprawne kryterium doboru wariantu obciążenia (${model.id}).`);
+          const profileKey = guide.profile || 'default';
+          const matchKey = guide.loadProfileMatch || '';
+          if (clickProfileMatches.has(profileKey) && clickProfileMatches.get(profileKey) !== matchKey) throw new Error(`Wariant klików ma niespójne kryteria obciążenia (${model.id}).`);
+          clickProfileMatches.set(profileKey, matchKey);
+          if ((guide.minRange !== undefined || guide.maxRange !== undefined) && (!Number.isInteger(guide.minRange) || !Number.isInteger(guide.maxRange) || guide.minRange < 0 || guide.maxRange < guide.minRange || guide.baselineClicks < guide.minRange || guide.baselineClicks > guide.maxRange)) throw new Error(`Niepoprawny zakres regulatora (${model.id}).`);
+        }
         const manufacturerSources = setting.sourceIds.map((id) => sourcesById.get(id)).filter(Boolean);
         if (!manufacturerSources.length || manufacturerSources.some((source) => !manufacturerHostMatches(new URL(source.url).hostname.toLowerCase(), model.make))) throw new Error(`Nastawy muszą pochodzić z dokumentacji producenta ${model.make} (${model.id}).`);
       }
@@ -262,6 +291,341 @@
     if (sourceList.childElementCount) modelDetails.append(sourceList);
   }
 
+  const manualClickAdjusters = [
+    { id: 'front-compression', label: 'Przód · kompresja' },
+    { id: 'front-rebound', label: 'Przód · odbicie' },
+    { id: 'rear-compression', label: 'Tył · kompresja' },
+    { id: 'rear-rebound', label: 'Tył · odbicie' },
+  ];
+
+  function clickRecordKey() {
+    return selectedPersonalSetupKey();
+  }
+
+  function readClickRecord() {
+    const key = clickRecordKey();
+    const records = readObject(CLICK_SETUP_KEY);
+    return key && isPlainObject(records) && isPlainObject(records[key]) ? records[key] : { values: {} };
+  }
+
+  function saveClickValue(valueKey, value) {
+    const key = clickRecordKey();
+    if (!key) return;
+    const records = readObject(CLICK_SETUP_KEY);
+    const nextRecords = isPlainObject(records) ? records : {};
+    const prior = isPlainObject(nextRecords[key]) ? nextRecords[key] : {};
+    const values = isPlainObject(prior.values) ? prior.values : {};
+    values[valueKey] = value;
+    nextRecords[key] = { savedAt: new Date().toISOString(), values };
+    safeSet(CLICK_SETUP_KEY, JSON.stringify(nextRecords));
+  }
+
+  function clickOriginLabel(reference) {
+    return reference === 'left-stop' ? 'lewego ogranicznika' : reference === 'right-stop' ? 'prawego ogranicznika' : 'pozycji maksymalnego tłumienia';
+  }
+
+  function turnLabel(direction) {
+    return direction === 'clockwise' ? 'w prawo' : 'w lewo';
+  }
+
+  function clickCountWord(count) {
+    const absolute = Math.abs(count);
+    const lastTwo = absolute % 100;
+    const last = absolute % 10;
+    if (absolute === 1) return 'klik';
+    if (last >= 2 && last <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) return 'kliki';
+    return 'klików';
+  }
+
+  function updateClickRow(row) {
+    const output = row.querySelector('[data-click-output]');
+    const currentInput = row.querySelector('[data-click-current]');
+    const targetInput = row.querySelector('[data-click-target]');
+    const currentRaw = currentInput?.value.trim() ?? '';
+    const targetRaw = targetInput ? targetInput.value.trim() : (row.dataset.targetClicks || '');
+    if (currentRaw === '' || targetRaw === '') {
+      output.textContent = row.dataset.mode === 'manufacturer'
+        ? 'Wpisz aktualne położenie, aby sprawdzić różnicę względem bazy producenta.'
+        : 'Wpisz aktualną i docelową wartość z instrukcji, liczone od tego samego punktu.';
+      return;
+    }
+    const current = Number(currentRaw);
+    const target = Number(targetRaw);
+    if (!Number.isInteger(current) || !Number.isInteger(target) || current < 0 || target < 0) {
+      output.textContent = 'Wpisz całkowitą, nieujemną liczbę klików.';
+      return;
+    }
+    if (row.dataset.mode === 'manufacturer') {
+      const minimum = Number(row.dataset.targetMin);
+      const maximum = Number(row.dataset.targetMax);
+      const minRange = row.dataset.minRange === '' ? null : Number(row.dataset.minRange);
+      const maxRange = row.dataset.maxRange === '' ? null : Number(row.dataset.maxRange);
+      if ((minRange !== null && (current < minRange || current > maxRange)) || current < 0) {
+        output.textContent = 'Ta wartość wychodzi poza zakres klików podany w instrukcji. Sprawdź punkt liczenia.';
+      } else if (current >= minimum && current <= maximum) {
+        output.textContent = 'To ustawienie mieści się w tolerancji podanej przez producenta.';
+      } else {
+        const targetEdge = current < minimum ? minimum : maximum;
+        const difference = Math.abs(targetEdge - current);
+        const countDirection = row.dataset.countDirection;
+        const direction = current < minimum ? countDirection : (countDirection === 'clockwise' ? 'counterclockwise' : 'clockwise');
+        output.textContent = `Do zakresu producenta: ${difference} ${clickCountWord(difference)} ${turnLabel(direction)}. Nastawa standardowa: ${row.dataset.targetText}.`;
+      }
+      return;
+    }
+    const difference = target - current;
+    output.textContent = difference === 0
+      ? 'Aktualna wartość odpowiada wpisanej przez Ciebie wartości docelowej.'
+      : `Zmień liczbę z ${current} na ${target} klików (${Math.abs(difference)} ${clickCountWord(difference)} różnicy), licząc od tego samego punktu odniesienia.`;
+  }
+
+  function makeClickRow({ id, label, mode, reference, countDirection, baseline, tolerance = 0, minRange, maxRange, savedValues = {} }) {
+    const row = document.createElement('article');
+    row.className = 'click-row';
+    row.dataset.mode = mode;
+    if (mode === 'manufacturer') {
+      const minimum = baseline - tolerance;
+      const maximum = baseline + tolerance;
+      row.dataset.targetClicks = String(baseline);
+      row.dataset.targetMin = String(minimum);
+      row.dataset.targetMax = String(maximum);
+      row.dataset.targetText = tolerance ? `${baseline} ± ${tolerance} klik` : `${baseline} ${clickCountWord(baseline)}`;
+      row.dataset.countDirection = countDirection;
+      row.dataset.minRange = minRange === undefined ? '' : String(minRange);
+      row.dataset.maxRange = maxRange === undefined ? '' : String(maxRange);
+    }
+    const heading = document.createElement('div');
+    heading.className = 'click-row-heading';
+    const name = document.createElement('strong');
+    name.textContent = label;
+    const baselineText = document.createElement('span');
+    baselineText.className = 'click-baseline';
+    baselineText.textContent = mode === 'manufacturer'
+      ? `${tolerance ? `${baseline} ± ${tolerance} klik` : `${baseline} ${clickCountWord(baseline)}`} od ${clickOriginLabel(reference)}`
+      : 'Własna wartość z instrukcji';
+    heading.append(name, baselineText);
+    row.append(heading);
+
+    const fields = document.createElement('div');
+    fields.className = 'click-fields';
+    if (mode === 'manufacturer') {
+      const labelNode = document.createElement('label');
+      labelNode.textContent = `Teraz · kliki od ${clickOriginLabel(reference)}`;
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.min = '0';
+      input.step = '1';
+      input.inputMode = 'numeric';
+      input.autocomplete = 'off';
+      input.placeholder = 'np. 12';
+      input.dataset.clickCurrent = '';
+      input.dataset.clickValueKey = id;
+      input.value = typeof savedValues[id] === 'string' ? savedValues[id] : '';
+      labelNode.append(input);
+      fields.append(labelNode);
+    } else {
+      for (const [field, labelText, placeholder] of [
+        ['target', 'Cel z instrukcji', 'np. 12'],
+        ['current', 'Teraz', 'np. 15'],
+      ]) {
+        const labelNode = document.createElement('label');
+        labelNode.textContent = labelText;
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.step = '1';
+        input.inputMode = 'numeric';
+        input.autocomplete = 'off';
+        input.placeholder = placeholder;
+        input.dataset.clickValueKey = `${id}:${field}`;
+        input.dataset.clickValueField = field;
+        if (field === 'target') input.dataset.clickTarget = '';
+        else input.dataset.clickCurrent = '';
+        input.value = typeof savedValues[input.dataset.clickValueKey] === 'string' ? savedValues[input.dataset.clickValueKey] : '';
+        labelNode.append(input);
+        fields.append(labelNode);
+      }
+    }
+    row.append(fields);
+    const output = document.createElement('p');
+    output.className = 'click-row-output';
+    output.setAttribute('data-click-output', '');
+    output.setAttribute('aria-live', 'polite');
+    row.append(output);
+    row.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('input', () => {
+        saveClickValue(input.dataset.clickValueKey, input.value.trim());
+        updateClickRow(row);
+      });
+    });
+    updateClickRow(row);
+    return row;
+  }
+
+  function renderClickPlanner(model) {
+    const currentProfile = clickPlannerContent.querySelector('#click-profile')?.value;
+    clickPlannerContent.replaceChildren();
+    if (!makeInput.value || !modelInput.value.trim() || !yearInput.value) {
+      clickPlannerIntro.textContent = 'Wybierz markę, model i rocznik, aby zobaczyć punkt bazowy lub wpisać kliknięcia z instrukcji.';
+      return;
+    }
+    const vehicleLabel = `${makeInput.value} ${modelInput.value.trim()} · ${yearInput.value}`;
+    const guides = (model?.settings || []).filter((setting) => setting.clickGuide);
+    if (guides.length) {
+      const load = getLoadData();
+      const profiles = new Map();
+      for (const setting of guides) {
+        const guide = setting.clickGuide;
+        const key = guide.profile || 'default';
+        if (!profiles.has(key)) profiles.set(key, { label: guide.profileLabel || 'Pozycja standardowa', loadProfileMatch: guide.loadProfileMatch || '', settings: [] });
+        profiles.get(key).settings.push(setting);
+      }
+      const savedValues = readClickRecord().values || {};
+      const automaticProfile = [...profiles.entries()].find(([, profile]) => profile.loadProfileMatch && matchesLoadProfile(profile.loadProfileMatch, load))?.[0]
+        || (profiles.size === 1 && ![...profiles.values()][0].loadProfileMatch ? profiles.keys().next().value : '');
+      const selectedProfile = clickProfileOverride !== 'automatic' && profiles.has(clickProfileOverride)
+        ? clickProfileOverride
+        : currentProfile && currentProfile !== 'automatic' && profiles.has(currentProfile) && clickProfileOverride !== 'automatic'
+          ? currentProfile
+          : automaticProfile;
+      if (profiles.size > 1) {
+        const profileLabel = document.createElement('label');
+        profileLabel.className = 'click-profile-field';
+        profileLabel.textContent = 'Wariant z instrukcji · dobór automatyczny';
+        const select = document.createElement('select');
+        select.id = 'click-profile';
+        const automaticOption = document.createElement('option');
+        automaticOption.value = 'automatic';
+        automaticOption.textContent = 'Dobór automatyczny do obciążenia';
+        automaticOption.selected = clickProfileOverride === 'automatic';
+        select.append(automaticOption);
+        for (const [key, profile] of profiles) {
+          const option = document.createElement('option');
+          option.value = key;
+          option.textContent = `Pokaż ręcznie: ${profile.label}`;
+          option.selected = clickProfileOverride === key;
+          select.append(option);
+        }
+        select.value = clickProfileOverride !== 'automatic' && profiles.has(clickProfileOverride) ? clickProfileOverride : 'automatic';
+        select.addEventListener('change', () => {
+          clickProfileOverride = select.value;
+          renderClickPlanner(model);
+        });
+        profileLabel.append(select);
+        clickPlannerContent.append(profileLabel);
+      }
+      if (!selectedProfile) {
+        clickPlannerIntro.textContent = `Dla ${vehicleLabel} instrukcja nie podaje klików dla dokładnie takiego połączenia pasażera i bagażu. Nie przeliczamy kilogramów ani wzrostu na zgadywane wartości.`;
+        const notice = document.createElement('p');
+        notice.className = 'click-manual-note';
+        notice.textContent = 'Zmień obciążenie na wariant opisany przez producenta albo użyj ręcznego podglądu innego wariantu instrukcji. Waga i wzrost są pokazane jako kontekst; nie stanowią tabeli do przeliczenia klików.';
+        clickPlannerContent.append(notice);
+        return;
+      }
+      const profile = profiles.get(selectedProfile);
+      const wasManuallySelected = clickProfileOverride !== 'automatic';
+      if (profile.loadProfileMatch) {
+        clickPlannerIntro.textContent = wasManuallySelected
+          ? `Podgląd wariantu „${profile.label}” z instrukcji dla ${vehicleLabel}. To ręcznie wybrany punkt odniesienia, nie dopasowanie do wpisanego obciążenia.`
+          : `Dopasowano wariant „${profile.label}” z instrukcji dla ${vehicleLabel}. Podane kg i wzrost nie zmieniają klików, jeśli producent nie podaje dla nich osobnej tabeli.`;
+      } else {
+        clickPlannerIntro.textContent = `Nastawa standardowa producenta dla ${vehicleLabel}. Instrukcja nie podaje odrębnych klików dla wpisanej masy lub wzrostu.`;
+      }
+      for (const setting of profile.settings) {
+        const guide = setting.clickGuide;
+        const profileKey = guide.profile || 'default';
+        const valueKey = `${profileKey}:${guide.id}`;
+        clickPlannerContent.append(makeClickRow({
+          id: valueKey,
+          label: guide.label,
+          mode: 'manufacturer',
+          reference: guide.reference,
+          countDirection: guide.countDirection,
+          baseline: guide.baselineClicks,
+          tolerance: guide.tolerance || 0,
+          minRange: guide.minRange,
+          maxRange: guide.maxRange,
+          savedValues,
+        }));
+      }
+      return;
+    }
+
+    clickPlannerIntro.textContent = `Dla ${vehicleLabel} nie ma jeszcze potwierdzonych klików producenta. Wpisz wartości z instrukcji — narzędzie porówna je z obecną pozycją, ale nie poda zgadywanej nastawy.`;
+    const savedValues = readClickRecord().values || {};
+    const manualNotice = document.createElement('p');
+    manualNotice.className = 'click-manual-note';
+    manualNotice.textContent = 'Wartość docelową i aktualną policz od tego samego ogranicznika wskazanego w instrukcji. Wpisy zapisują się tylko w tej przeglądarce i nie są fabryczną rekomendacją.';
+    clickPlannerContent.append(manualNotice);
+    for (const adjuster of manualClickAdjusters) {
+      clickPlannerContent.append(makeClickRow({
+        id: adjuster.id,
+        label: adjuster.label,
+        mode: 'manual',
+        savedValues,
+      }));
+    }
+  }
+
+  function getLoadData() {
+    const readOptional = (input) => input.value.trim() === '' ? NaN : Number(input.value);
+    return {
+      riderWeight: readOptional(riderWeightInput),
+      riderHeight: readOptional(riderHeightInput),
+      luggageWeight: readOptional(luggageWeightInput),
+      cases: Number(luggageCasesInput.value),
+      hasPassenger: hasPassengerInput.checked,
+      passengerWeight: readOptional(passengerWeightInput),
+    };
+  }
+
+  function matchesLoadProfile(rule, load) {
+    if (rule === 'solo-no-luggage') return !load.hasPassenger && load.cases === 0 && load.luggageWeight === 0;
+    if (rule === 'solo-three-cases') return !load.hasPassenger && load.cases === 3;
+    if (rule === 'two-riders-three-cases') return load.hasPassenger && load.cases === 3;
+    return false;
+  }
+
+  function updateLoadSummary({ resetClickOverride = false } = {}) {
+    if (resetClickOverride) clickProfileOverride = 'automatic';
+    passengerWeightField.hidden = !hasPassengerInput.checked;
+    const load = getLoadData();
+    const formatter = new Intl.NumberFormat('pl-PL', { maximumFractionDigits: 1 });
+    const parts = [];
+    const riderWeightValid = Number.isFinite(load.riderWeight) && riderWeightInput.validity.valid;
+    const riderHeightValid = Number.isFinite(load.riderHeight) && riderHeightInput.validity.valid;
+    const luggageWeightValid = Number.isFinite(load.luggageWeight) && luggageWeightInput.validity.valid;
+    const passengerWeightValid = Number.isFinite(load.passengerWeight) && passengerWeightInput.validity.valid;
+    const complete = riderWeightValid && riderHeightValid && luggageWeightValid && (!load.hasPassenger || passengerWeightValid);
+    if (riderWeightValid) parts.push(`kierowca ${formatter.format(load.riderWeight)} kg`);
+    else parts.push(Number.isFinite(load.riderWeight) ? 'sprawdź zakres wagi kierowcy (1–300 kg)' : 'uzupełnij wagę kierowcy');
+    if (riderHeightValid) parts.push(`${formatter.format(load.riderHeight)} cm wzrostu`);
+    else parts.push(Number.isFinite(load.riderHeight) ? 'sprawdź zakres wzrostu (100–230 cm)' : 'uzupełnij wzrost kierowcy');
+    if (load.hasPassenger) {
+      if (passengerWeightValid) parts.push(`pasażer ${formatter.format(load.passengerWeight)} kg`);
+      else parts.push(Number.isFinite(load.passengerWeight) ? 'sprawdź zakres wagi pasażera (1–250 kg)' : 'uzupełnij wagę pasażera');
+    } else {
+      parts.push('jazda solo');
+    }
+    if (luggageWeightValid) parts.push(`bagaż ${formatter.format(load.luggageWeight)} kg`);
+    else parts.push(Number.isFinite(load.luggageWeight) ? 'sprawdź zakres bagażu (0–200 kg)' : 'uzupełnij masę bagażu (wpisz 0, jeśli go nie ma)');
+    const casesLabel = ['bez kufrów', '1 kufer', '2 kufry', '3 kufry'][load.cases] || '';
+    if (casesLabel) parts.push(casesLabel);
+    if (complete) {
+      const total = load.riderWeight + (load.hasPassenger ? load.passengerWeight : 0) + load.luggageWeight;
+      parts.push(`razem osoby + bagaż: ${formatter.format(total)} kg`);
+    }
+    loadSummary.textContent = `${parts.join(' · ')}. Wzrost i masa są kontekstem; kliki zmieniają się tylko według wariantu opisanego w instrukcji producenta.`;
+    loadSummary.dataset.complete = String(complete);
+    riderLoadedLabel.textContent = load.hasPassenger || (Number.isFinite(load.luggageWeight) && load.luggageWeight > 0)
+      ? 'Pomiar: motocykl w wybranym obciążeniu'
+      : 'Pomiar: kierowca z wyposażeniem';
+    riderLoadedHelp.textContent = load.hasPassenger || (Number.isFinite(load.luggageWeight) && load.luggageWeight > 0)
+      ? 'Kierowca w stroju, pasażer i bagaż zgodnie z podanym wyżej wariantem.'
+      : 'Kierowca w pełnym stroju, w pozycji do jazdy.';
+    renderClickPlanner(getSelectedModel());
+  }
+
   function selectedPersonalSetupKey() {
     const make = makeInput.value;
     const model = normalize(modelInput.value);
@@ -329,6 +693,7 @@
     const item = getSelectedModel();
     syncTravelField();
     modelDetails.replaceChildren();
+    renderClickPlanner(item);
     if (item?.status === 'verified') {
       modelStatus.dataset.status = 'verified';
       modelStatusTitle.textContent = 'Nastawy potwierdzone źródłem';
@@ -543,6 +908,7 @@
   }
 
   function updateSelectedVehicle() {
+    clickProfileOverride = 'automatic';
     const matches = catalog?.models.filter((item) => item.make === makeInput.value && normalize(item.model) === normalize(modelInput.value)) || [];
     if (matches.length === 1 && matches[0].year !== null) yearInput.value = String(matches[0].year);
     populateSuggestions();
@@ -553,11 +919,14 @@
   personalSetup.addEventListener('submit', savePersonalSetup);
   personalSetupClear.addEventListener('click', clearPersonalSetup);
   makeInput.addEventListener('change', updateSelectedVehicle);
-  modelInput.addEventListener('input', renderModelStatus);
+  modelInput.addEventListener('input', () => { clickProfileOverride = 'automatic'; renderModelStatus(); });
   modelInput.addEventListener('change', updateSelectedVehicle);
-  yearInput.addEventListener('input', renderModelStatus);
+  yearInput.addEventListener('input', () => { clickProfileOverride = 'automatic'; renderModelStatus(); });
   yearInput.addEventListener('change', renderModelStatus);
   suspensionSideInput.addEventListener('change', renderModelStatus);
+  [riderWeightInput, riderHeightInput, luggageWeightInput, passengerWeightInput].forEach((input) => input.addEventListener('input', () => updateLoadSummary({ resetClickOverride: true })));
+  luggageCasesInput.addEventListener('change', () => updateLoadSummary({ resetClickOverride: true }));
+  hasPassengerInput.addEventListener('change', () => updateLoadSummary({ resetClickOverride: true }));
   refreshButton.addEventListener('click', () => refreshCatalog({ manual: true }));
   window.addEventListener('online', () => refreshCatalog());
   window.addEventListener('offline', () => {
@@ -597,6 +966,7 @@
   });
 
   const initial = cachedCatalog();
+  updateLoadSummary();
   if (initial) {
     catalog = initial.catalog;
     renderCachedCatalog(safeGet(CHECK_KEY));
@@ -612,7 +982,13 @@
   }, 60 * 60 * 1000);
 
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {
+    const alreadyControlled = Boolean(navigator.serviceWorker.controller);
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (alreadyControlled) window.location.reload();
+    });
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((registration) => {
+      registration.update().catch(() => {});
+    }).catch(() => {
       catalogMessage.textContent = 'Kalkulator jest dostępny, ale przeglądarka nie uruchomiła trybu offline. Do instalacji wymagany jest HTTPS.';
     }));
   }

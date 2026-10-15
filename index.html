@@ -11,7 +11,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=1.7.0" />
     <title>BigBikes · Kalkulator zawieszenia</title>
   </head>
   <body>
@@ -81,7 +81,34 @@
               </label>
             </div>
 
-            <div class="form-divider"><span class="step-label">02 <span>/ POMIAR</span></span><h3>Wprowadź odczyty w milimetrach</h3></div>
+            <section class="load-profile" aria-labelledby="load-profile-title">
+              <div class="load-profile-heading">
+                <span class="step-label">02 <span>/ OBCIĄŻENIE</span></span>
+                <h3 id="load-profile-title">Kto jedzie i z jakim bagażem?</h3>
+                <p>Te informacje pomagają dobrać właściwy wariant z instrukcji. Wpisz dane kierowcy, a jeśli jedzie pasażer — także jego masę.</p>
+              </div>
+              <div class="load-profile-fields">
+                <label class="load-field">Waga kierowcy<span class="input-unit"><input id="rider-weight" type="number" inputmode="decimal" min="1" max="300" step="0.5" placeholder="np. 85" /><b>kg</b></span></label>
+                <label class="load-field">Wzrost kierowcy<span class="input-unit"><input id="rider-height" type="number" inputmode="numeric" min="100" max="230" step="1" placeholder="np. 178" /><b>cm</b></span></label>
+                <label class="load-field">Bagaż<span class="input-unit"><input id="luggage-weight" type="number" inputmode="decimal" min="0" max="200" step="0.5" placeholder="0, jeśli bez bagażu" /><b>kg</b></span></label>
+                <label class="load-field">Liczba kufrów<select id="luggage-cases"><option value="0">Bez kufrów</option><option value="1">1 kufer</option><option value="2">2 kufry</option><option value="3">3 kufry</option></select></label>
+                <label class="passenger-toggle"><input id="has-passenger" type="checkbox" /><span>Jadę z pasażerem</span></label>
+                <label id="passenger-weight-field" class="load-field" hidden>Waga pasażera<span class="input-unit"><input id="passenger-weight" type="number" inputmode="decimal" min="1" max="250" step="0.5" placeholder="np. 60" /><b>kg</b></span></label>
+              </div>
+              <p id="load-summary" class="load-summary" aria-live="polite">Podaj wagę i wzrost kierowcy oraz masę bagażu. Włącz pasażera, jeśli jedzie.</p>
+            </section>
+
+            <section id="click-planner" class="click-planner" aria-labelledby="click-planner-title">
+              <div class="click-planner-heading">
+                <span class="step-label">03 <span>/ USTAWIENIA REGULATORÓW</span></span>
+                <h3 id="click-planner-title">Ustawienie klików</h3>
+                <p id="click-planner-intro" class="click-planner-intro" aria-live="polite">Wybierz model, aby zobaczyć ustawienia z instrukcji producenta.</p>
+              </div>
+              <div id="click-planner-content" class="click-planner-content"></div>
+              <p class="click-planner-safety">Kliknięcia licz od oporu wskazanego w instrukcji. Do oporu dochodź delikatnie — nie dokręcaj regulatora siłą. Waga i wzrost nie wystarczą, by bezpiecznie przeliczyć obciążenie na kliki, jeśli producent nie podał takich tabel.</p>
+            </section>
+
+            <div class="form-divider"><span class="step-label">04 <span>/ POMIAR</span></span><h3>Wprowadź odczyty w milimetrach</h3></div>
             <div class="field-grid measurement-fields">
               <label class="field">
                 <span>Pomiar przy pełnym rozprężeniu</span>
@@ -94,9 +121,9 @@
                 <small>Motocykl stoi na kołach, bez kierowcy.</small>
               </label>
               <label class="field">
-                <span>Pomiar: kierowca z wyposażeniem</span>
+                <span id="rider-loaded-label">Pomiar: kierowca z wyposażeniem</span>
                 <span class="input-unit"><input id="rider-loaded" name="riderLoaded" type="number" inputmode="decimal" min="0" step="0.1" placeholder="np. 540" required /><b>mm</b></span>
-                <small>Kierowca w pełnym stroju, w pozycji do jazdy.</small>
+                <small id="rider-loaded-help">Kierowca w pełnym stroju, w pozycji do jazdy.</small>
               </label>
             </div>
 
@@ -190,7 +217,7 @@
       </section>
 
       <section class="how-section page-width" aria-label="Jak mierzyć">
-        <div class="how-number">03</div>
+        <div class="how-number">05</div>
         <div><p class="eyebrow"><span class="eyebrow-line"></span> JAK ZMIERZYĆ</p><h2>Trzy odczyty.<br /><em>Jedna baza pomiarowa.</em></h2></div>
         <div class="how-copy"><p>Wybierz jeden punkt pomiarowy na osi zawieszenia. Zmierz go przy pełnym rozprężeniu, potem z motocyklem na kołach, a na końcu z kierowcą w pełnym wyposażeniu.</p><p>Ugięcie własne = rozprężenie − motocykl. Ugięcie z kierowcą = rozprężenie − kierowca.</p></div>
       </section>
@@ -245,6 +272,6 @@
       </div>
     </footer>
 
-    <script src="app.js" defer></script>
+    <script src="app.js?v=1.7.0" defer></script>
   </body>
 </html>

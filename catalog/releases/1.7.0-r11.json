@@ -1,0 +1,2290 @@
+{
+  "schemaVersion": 1,
+  "revision": 11,
+  "catalogVersion": "1.7.0",
+  "publishedAt": "2026-10-15T19:36:05Z",
+  "makes": [
+    "VOGE",
+    "ZONTES",
+    "KOVE"
+  ],
+  "models": [
+    {
+      "id": "kove-800x-pro-2026",
+      "make": "KOVE",
+      "model": "800X Pro",
+      "year": 2026,
+      "status": "verified",
+      "notes": "Nastawy standardowe KOVE 800X Pro w wersji Pro. Licz od pozycji maksymalnego tłumienia zgodnie z instrukcją; przed regulacją sprawdź, czy osprzęt motocykla odpowiada wersji opisanej w instrukcji.",
+      "sources": [
+        {
+          "id": "kove-800x-pro-2026-spec",
+          "title": "KOVE · 800X PRO CN4/E5+ · specyfikacja producenta",
+          "url": "https://www.kovemoto.com/kove-800x-pro",
+          "retrievedAt": "2026-10-15T18:31:09Z",
+          "notes": "Producent podaje skok przód/tył po 240 mm oraz regulację napięcia wstępnego. Parametry techniczne nie są zaleceniem nastawy."
+        },
+        {
+          "id": "kove-800x-pro-2026-manual",
+          "title": "KOVE · instrukcja 800X Pro · wydanie 2026",
+          "url": "https://www.kovemoto.com/wp-content/uploads/2026/08/800X-PRO-2026-USER-MANUAL-2026.03.pdf",
+          "retrievedAt": "2026-10-15T19:12:00Z",
+          "notes": "Instrukcja 800X Pro 2026 opublikowana na oficjalnej stronie serwisowej producenta. Sekcja regulacji zawieszenia: przód i tył, nastawa standardowa, liczona od maksymalnego tłumienia."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 240,
+          "unit": "mm",
+          "sourceIds": [
+            "kove-800x-pro-2026-spec"
+          ]
+        },
+        {
+          "kind": "travel",
+          "side": "rear",
+          "name": "Skok zawieszenia",
+          "value": 240,
+          "unit": "mm",
+          "sourceIds": [
+            "kove-800x-pro-2026-spec"
+          ]
+        }
+      ],
+      "settings": [
+        {
+          "side": "front",
+          "name": "Kompresja · wersja Pro",
+          "value": "12 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 12 klików. Zakres regulatora: 23 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "front-compression",
+            "label": "Przód · kompresja",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 12,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 25
+          }
+        },
+        {
+          "side": "front",
+          "name": "Odbicie · wersja Pro",
+          "value": "18 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 18 klików. Zakres regulatora: 24 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "front-rebound",
+            "label": "Przód · odbicie",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 18,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 26
+          }
+        },
+        {
+          "side": "rear",
+          "name": "Kompresja · amortyzator",
+          "value": "10 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 10 klików. Zakres regulatora: 20 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "rear-compression",
+            "label": "Tył · kompresja",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 10,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 22
+          }
+        },
+        {
+          "side": "rear",
+          "name": "Odbicie · amortyzator",
+          "value": "10 klików od maksymalnego tłumienia",
+          "context": "Pozycja standardowa. Od pełnego domknięcia w prawo odkręć w lewo 10 klików. Zakres regulatora: 23 ± 2 kliki.",
+          "sourceIds": ["kove-800x-pro-2026-manual"],
+          "clickGuide": {
+            "id": "rear-rebound",
+            "label": "Tył · odbicie",
+            "profile": "standard-pro",
+            "profileLabel": "Nastawa standardowa · wersja Pro",
+            "baselineClicks": 10,
+            "tolerance": 0,
+            "reference": "hard-stop",
+            "countDirection": "counterclockwise",
+            "minRange": 0,
+            "maxRange": 25
+          }
+        }
+      ]
+    },
+    {
+      "id": "kove-800x-touring-2026",
+      "make": "KOVE",
+      "model": "800 X Touring",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Skok zawieszenia przód/tył 210/210 mm według strony producenta KOVE. Nie są dostępne zweryfikowane nastawy bazowe dla właściwego rocznika.",
+      "sources": [
+        {
+          "id": "kove-800x-touring-spec",
+          "title": "KOVE · 800X Touring · specyfikacja producenta",
+          "url": "https://de.kovemoto.com/800x-touring",
+          "retrievedAt": "2026-10-15T18:31:09Z",
+          "notes": "Oficjalna regionalna strona KOVE podaje skok zawieszenia przód/tył 210/210 mm. Parametry techniczne nie są zaleceniem nastawy."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 210,
+          "unit": "mm",
+          "sourceIds": ["kove-800x-touring-spec"]
+        },
+        {
+          "kind": "travel",
+          "side": "rear",
+          "name": "Skok zawieszenia",
+          "value": 210,
+          "unit": "mm",
+          "sourceIds": ["kove-800x-touring-spec"]
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-900-dsx-2026",
+      "make": "VOGE",
+      "model": "900 DSX",
+      "year": 2026,
+      "status": "verified",
+      "notes": "Nastawy pochodzą z instrukcji VOGE 900 DSX E5+. Sprawdź, czy homologacja i osprzęt Twojego motocykla odpowiadają tej wersji. Wartości obciążeniowe z tyłu dla trzech kufrów.",
+      "sources": [
+        {
+          "id": "voge-900-dsx-2026-spec",
+          "title": "VOGE Polska · 900 DSX · specyfikacja producenta",
+          "url": "https://voge.pl/modele/900-dsx",
+          "retrievedAt": "2026-10-15T18:31:09Z",
+          "notes": "Oficjalna strona VOGE Polska podaje skok przód/tył 194/198 mm. Parametry techniczne nie są zaleceniem nastawy."
+        },
+        {
+          "id": "voge-900-dsx-e5-plus-manual",
+          "title": "VOGE 900 DSX E5+ · instrukcja obsługi · regulacja zawieszenia",
+          "url": "https://vogespain.es/wp-content/uploads/Manual-de-Propietario-Voge-900DSX-Euro-5-Espanol.pdf",
+          "retrievedAt": "2026-10-15T18:31:09Z",
+          "notes": "Instrukcja producenta VOGE Hiszpania, strony 116–119. Podaje kierunek działania przednich regulatorów oraz pozycje tylnego pokrętła dla jazdy solo i z bagażem. Wstępne napięcie sprężyny regulowane pierścieniem wymaga narzędzi i warsztatu."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 194,
+          "unit": "mm",
+          "sourceIds": [
+            "voge-900-dsx-2026-spec"
+          ]
+        },
+        {
+          "kind": "travel",
+          "side": "rear",
+          "name": "Skok zawieszenia",
+          "value": 198,
+          "unit": "mm",
+          "sourceIds": [
+            "voge-900-dsx-2026-spec"
+          ]
+        }
+      ],
+      "settings": [
+        {
+          "side": "front",
+          "name": "Napięcie wstępne sprężyny",
+          "value": "w lewo = mniejsze; w prawo = większe",
+          "context": "Instrukcja E5+ nie podaje liczby obrotów bazowych dla przodu.",
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "front",
+          "name": "Odbicie · lewa laga",
+          "value": "w lewo = szybszy powrót; w prawo = wolniejszy",
+          "context": "Regulator nr 2. Nie obracaj pokrętła na siłę do oporu.",
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "front",
+          "name": "Kompresja · prawa laga",
+          "value": "w lewo = słabsze tłumienie; w prawo = mocniejsze",
+          "context": "Regulator nr 3. Nie obracaj pokrętła na siłę do oporu.",
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Napięcie wstępne · solo, bez bagażu",
+          "value": 6,
+          "unit": "klików",
+          "context": "Pokrętło hydrauliczne nr 1: od lewego ogranicznika w prawo. Instrukcja określa to jako pozycję seryjną.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "solo", "profileLabel": "Solo · bez bagażu", "loadProfileMatch": "solo-no-luggage", "baselineClicks": 6, "tolerance": 0, "reference": "left-stop", "countDirection": "clockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Napięcie wstępne · solo, 3 kufry",
+          "value": "16 ± 1",
+          "unit": "klików",
+          "context": "Od lewego ogranicznika w prawo.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "solo-cases", "profileLabel": "Solo · trzy kufry", "loadProfileMatch": "solo-three-cases", "baselineClicks": 16, "tolerance": 1, "reference": "left-stop", "countDirection": "clockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Napięcie wstępne · kierowca + pasażer, 3 kufry",
+          "value": "21 ± 1",
+          "unit": "klików",
+          "context": "Od lewego ogranicznika w prawo.",
+          "clickGuide": { "id": "rear-preload", "label": "Tył · napięcie wstępne", "profile": "two-riders-cases", "profileLabel": "Kierowca + pasażer · trzy kufry", "loadProfileMatch": "two-riders-three-cases", "baselineClicks": 21, "tolerance": 1, "reference": "left-stop", "countDirection": "clockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Odbicie · solo, bez bagażu",
+          "value": 18,
+          "unit": "klików",
+          "context": "Od prawego ogranicznika w lewo; pozycja seryjna. W lewo szybszy powrót, w prawo wolniejszy.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "solo", "profileLabel": "Solo · bez bagażu", "loadProfileMatch": "solo-no-luggage", "baselineClicks": 18, "tolerance": 0, "reference": "right-stop", "countDirection": "counterclockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Odbicie · solo, 3 kufry",
+          "value": "16 ± 1",
+          "unit": "klików",
+          "context": "Od prawego ogranicznika w lewo.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "solo-cases", "profileLabel": "Solo · trzy kufry", "loadProfileMatch": "solo-three-cases", "baselineClicks": 16, "tolerance": 1, "reference": "right-stop", "countDirection": "counterclockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        },
+        {
+          "side": "rear",
+          "name": "Odbicie · kierowca + pasażer, 3 kufry",
+          "value": "14 ± 1",
+          "unit": "klików",
+          "context": "Od prawego ogranicznika w lewo.",
+          "clickGuide": { "id": "rear-rebound", "label": "Tył · odbicie", "profile": "two-riders-cases", "profileLabel": "Kierowca + pasażer · trzy kufry", "loadProfileMatch": "two-riders-three-cases", "baselineClicks": 14, "tolerance": 1, "reference": "right-stop", "countDirection": "counterclockwise" },
+          "sourceIds": [
+            "voge-900-dsx-e5-plus-manual"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zontes-703-f-2026",
+      "make": "ZONTES",
+      "model": "703 F",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Producent publikuje osobne instrukcje 2026 dla wersji z kołem 21 i 19 cali. Katalog producenta podaje skok 180/180 mm; nastawy dodamy po potwierdzeniu właściwej wersji i odczytaniu instrukcji.",
+      "sources": [
+        {
+          "id": "zontes-703f-2026-spec",
+          "title": "ZONTES Official · 703F MY26 · specyfikacja producenta",
+          "url": "https://zontes.eu/it-it/moto/703f-my26/",
+          "retrievedAt": "2026-10-15T17:37:41Z",
+          "notes": "Oficjalna strona ZONTES podaje skok 180 mm z przodu i 180 mm z tyłu. Parametry techniczne nie są zaleceniem nastawy."
+        },
+        {
+          "id": "zontes-703f-2026-manual-listing",
+          "title": "ZONTES · instrukcja obsługi 703F 21 cali · model 2026",
+          "url": "https://www.sharpon.com/Tayoimg/DRP/DRPProducts/DRPPageIMG/PdfZT202609161711437858374.pdf",
+          "retrievedAt": "2026-10-15T17:34:55Z",
+          "notes": "Producent udostępnia oddzielne instrukcje 2026 dla 703F z kołem 21 cali i 19 cali. Należy dobrać instrukcję do rzeczywistej wersji motocykla."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 180,
+          "unit": "mm",
+          "sourceIds": [
+            "zontes-703f-2026-spec"
+          ]
+        },
+        {
+          "kind": "travel",
+          "side": "rear",
+          "name": "Skok zawieszenia",
+          "value": 180,
+          "unit": "mm",
+          "sourceIds": [
+            "zontes-703f-2026-spec"
+          ]
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "kove-450-rally-2026",
+      "make": "KOVE",
+      "model": "450 Rally RE",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Producent podaje skok 305/300 mm w konfiguracji wysokiej oraz 255/270 mm w niskiej. Brak zweryfikowanych bazowych klików tłumienia dla tej wersji.",
+      "sources": [
+        {
+          "id": "kove-450-rally-re-spec",
+          "title": "KOVE · 450 Rally RE · specyfikacja producenta",
+          "url": "https://www.kovemoto.com/kove-450-rally-re?c=show&id=71",
+          "retrievedAt": "2026-10-15T17:37:41Z",
+          "notes": "Producent podaje skok 305/300 mm w konfiguracji wysokiej i 255/270 mm w niskiej. Wpisane wartości skoku kalkulatora dotyczą konfiguracji wysokiej."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 305,
+          "unit": "mm",
+          "sourceIds": [
+            "kove-450-rally-re-spec"
+          ]
+        },
+        {
+          "kind": "travel",
+          "side": "rear",
+          "name": "Skok zawieszenia",
+          "value": 300,
+          "unit": "mm",
+          "sourceIds": [
+            "kove-450-rally-re-spec"
+          ]
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "kove-510x-2026",
+      "make": "KOVE",
+      "model": "510X",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Brak źródłowo potwierdzonego skoku i nastaw bazowych dla wersji z oferty.",
+      "sources": [
+        {
+          "id": "bigbikes-kove-510x-2026",
+          "title": "BigBikes · KOVE 510X · dane modelu",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/kove-510x/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta oferty potwierdza model i rok produkcji 2026; nie podaje skoku zawieszenia ani nastaw."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "kove-800x-rally-2026",
+      "make": "KOVE",
+      "model": "800X Rally",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Brak zweryfikowanych nastaw bazowych dla wersji z oferty.",
+      "sources": [
+        {
+          "id": "bigbikes-kove-800x-rally-2026",
+          "title": "BigBikes · KOVE 800X Rally · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/kove-800x-rally/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu potwierdza model i rok produkcji 2026; nie przypisano niezweryfikowanych wartości zawieszenia."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-r-125-2026",
+      "make": "VOGE",
+      "model": "125 R",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "W katalogu nie ma potwierdzonych nastaw zawieszenia dla tego modelu.",
+      "sources": [
+        {
+          "id": "bigbikes-voge-r-125-2026",
+          "title": "BigBikes · Voge R 125 · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/voge-r-125/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta oferty podaje rok produkcji 2026; brak źródłowo potwierdzonych wartości nastaw."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-ds-800-x-rally-2025",
+      "make": "VOGE",
+      "model": "DS 800 X Rally",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Brak zweryfikowanych nastaw zawieszenia dla rocznika z oferty.",
+      "sources": [
+        {
+          "id": "bigbikes-voge-ds-800-x-rally-2025",
+          "title": "BigBikes · Voge DS 800 X Rally · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/voge-rally-800/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu podaje rok produkcji 2025. Nie przypisano nastaw ani skoku bez ich osobnego potwierdzenia."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-300-gy-rally-2025",
+      "make": "VOGE",
+      "model": "300 GY Rally",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Brak zweryfikowanych nastaw zawieszenia dla rocznika z oferty.",
+      "sources": [
+        {
+          "id": "bigbikes-voge-300-gy-rally-2025",
+          "title": "BigBikes · Voge 300 GY Rally · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/voge-300-gy-rally/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta BigBikes potwierdza model w ofercie."
+        },
+        {
+          "id": "voge-pl-300-gy-rally-2025",
+          "title": "VOGE Polska · 300 GY Rally · rocznik 2025",
+          "url": "https://voge.pl/modele/300gy-rally",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Oficjalna strona producenta wskazuje rocznik 2025. Nie użyto jej do publikacji nastaw."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-sr1-125-adv-2025",
+      "make": "VOGE",
+      "model": "SR1 ADV",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Brak zweryfikowanych nastaw zawieszenia dla tego skutera.",
+      "sources": [
+        {
+          "id": "bigbikes-voge-sr1-125-adv-2025",
+          "title": "BigBikes · Voge SR1 125 ADV · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/voge-sr1-125-adv/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu podaje rok produkcji 2025. Nie podaje zweryfikowanych nastaw zawieszenia."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-525-dsx-2026",
+      "make": "VOGE",
+      "model": "525 DSX",
+      "year": 2026,
+      "status": "unverified",
+      "notes": "Producent podaje skok przedniego widelca 150 mm. Nie podaje skoku z tyłu na stronie modelu. Brak zweryfikowanych nastaw bazowych.",
+      "sources": [
+        {
+          "id": "voge-525-dsx-spec",
+          "title": "VOGE Polska · 525 DSX · specyfikacja producenta",
+          "url": "https://voge.pl/modele/525-dsx",
+          "retrievedAt": "2026-10-15T17:37:41Z",
+          "notes": "Oficjalna strona VOGE Polska podaje 150 mm skoku z przodu. Nie znaleziono wartości skoku z tyłu."
+        }
+      ],
+      "specifications": [
+        {
+          "kind": "travel",
+          "side": "front",
+          "name": "Skok zawieszenia",
+          "value": 150,
+          "unit": "mm",
+          "sourceIds": [
+            "voge-525-dsx-spec"
+          ]
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-625-dsx-2025",
+      "make": "VOGE",
+      "model": "625 DSX",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Brak zweryfikowanych nastaw zawieszenia dla rocznika z oferty.",
+      "sources": [
+        {
+          "id": "bigbikes-voge-625-dsx-2025",
+          "title": "BigBikes · Voge 625 DSX · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/voge-625-dsx/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu podaje rok produkcji 2025; nie podaje skoku ani nastaw zawieszenia."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "zontes-zt-125-c2-2025",
+      "make": "ZONTES",
+      "model": "125 C2",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Karta opisuje rodzaj zawieszenia, ale nie publikuje zweryfikowanych nastaw ani skoku.",
+      "sources": [
+        {
+          "id": "bigbikes-zontes-zt-125-c2-2025",
+          "title": "BigBikes · Zontes ZT-125 C2 · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/zontes-zt-125-c2/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu podaje rok produkcji 2025; typ zawieszenia nie jest nastawą ani wartością skoku."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "zontes-zt-125-c-2025",
+      "make": "ZONTES",
+      "model": "125 C",
+      "year": 2025,
+      "status": "unverified",
+      "notes": "Karta opisuje rodzaj zawieszenia, ale nie publikuje zweryfikowanych nastaw ani skoku.",
+      "sources": [
+        {
+          "id": "bigbikes-zontes-zt-125-c-2025",
+          "title": "BigBikes · Zontes ZT-125 C · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle_nowe/zontes-zt-125-c/",
+          "retrievedAt": "2026-10-15T18:01:09Z",
+          "notes": "Karta produktu podaje rok produkcji 2025; typ zawieszenia nie jest nastawą ani wartością skoku."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "zontes-zt-125-u-2022",
+      "make": "ZONTES",
+      "model": "125 U",
+      "year": 2022,
+      "status": "unverified",
+      "notes": "Używany egzemplarz z oferty BigBikes. Brak zweryfikowanych nastaw i wartości skoku.",
+      "sources": [
+        {
+          "id": "bigbikes-zontes-zt-125-u-2022",
+          "title": "BigBikes · używany Zontes ZT-125 U · oferta",
+          "url": "https://www.bigbikes.pl/sklep/motocykle/motocykle-uzywane/zontes-zt-125-u/",
+          "retrievedAt": "2026-10-15T18:05:18Z",
+          "notes": "Karta produktu podaje rok produkcji 2022. Nie podaje zweryfikowanych danych nastaw zawieszenia."
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "voge-sr1-all-years",
+      "make": "VOGE",
+      "model": "SR1",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-sr1-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-sr1-adv-all-years",
+      "make": "VOGE",
+      "model": "SR1 ADV",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-sr1-adv-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-sr4-max-t-all-years",
+      "make": "VOGE",
+      "model": "SR4 MAX/T",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-sr4-max-t-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-sr450x-all-years",
+      "make": "VOGE",
+      "model": "SR450X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-sr450x-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-125-r-all-years",
+      "make": "VOGE",
+      "model": "125 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-125-r-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-r125-s-all-years",
+      "make": "VOGE",
+      "model": "R125 S",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-r125-s-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-300-gy-rally-all-years",
+      "make": "VOGE",
+      "model": "300 GY Rally",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-300-gy-rally-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-800-rally-all-years",
+      "make": "VOGE",
+      "model": "800 Rally",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-800-rally-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-525-dsx-all-years",
+      "make": "VOGE",
+      "model": "525 DSX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-525-dsx-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-625-dsx-all-years",
+      "make": "VOGE",
+      "model": "625 DSX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-625-dsx-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-625-dsx-hg-all-years",
+      "make": "VOGE",
+      "model": "625 DSX-HG",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-625-dsx-hg-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-900-dsx-all-years",
+      "make": "VOGE",
+      "model": "900 DSX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-900-dsx-all-years-lineup-source",
+          "title": "VOGE Polska · aktualna gama modeli",
+          "url": "https://voge.pl/modele",
+          "notes": "Oficjalny katalog VOGE Polska potwierdza nazwę modelu. Nie wskazuje konkretnego rocznika motocykla ani jego nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-300-ac-all-years",
+      "make": "VOGE",
+      "model": "300 AC",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-300-ac-all-years-lineup-source",
+          "title": "VOGE Polska · modele archiwalne",
+          "url": "https://voge.pl/mapa-strony",
+          "notes": "Oficjalna mapa strony wymienia model w dziale modeli archiwalnych. Nazwa nie potwierdza rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-500-ac-all-years",
+      "make": "VOGE",
+      "model": "500 AC",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-500-ac-all-years-lineup-source",
+          "title": "VOGE Polska · modele archiwalne",
+          "url": "https://voge.pl/mapa-strony",
+          "notes": "Oficjalna mapa strony wymienia model w dziale modeli archiwalnych. Nazwa nie potwierdza rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-525-acx-all-years",
+      "make": "VOGE",
+      "model": "525 ACX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-525-acx-all-years-lineup-source",
+          "title": "VOGE Polska · modele archiwalne",
+          "url": "https://voge.pl/mapa-strony",
+          "notes": "Oficjalna mapa strony wymienia model w dziale modeli archiwalnych. Nazwa nie potwierdza rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-650-dsx-all-years",
+      "make": "VOGE",
+      "model": "650 DSX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-650-dsx-all-years-lineup-source",
+          "title": "VOGE Polska · modele archiwalne",
+          "url": "https://voge.pl/mapa-strony",
+          "notes": "Oficjalna mapa strony wymienia model w dziale modeli archiwalnych. Nazwa nie potwierdza rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "voge-500-ds-all-years",
+      "make": "VOGE",
+      "model": "500 DS",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "voge-500-ds-all-years-lineup-source",
+          "title": "VOGE Polska · modele archiwalne",
+          "url": "https://voge.pl/mapa-strony",
+          "notes": "Oficjalna mapa strony wymienia model w dziale modeli archiwalnych. Nazwa nie potwierdza rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-800x-touring-all-years",
+      "make": "KOVE",
+      "model": "800X Touring",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-800x-touring-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-625x-all-years",
+      "make": "KOVE",
+      "model": "625X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-625x-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-800x-pro-all-years",
+      "make": "KOVE",
+      "model": "800X Pro",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-800x-pro-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-525x-all-years",
+      "make": "KOVE",
+      "model": "525X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-525x-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-800x-rally-all-years",
+      "make": "KOVE",
+      "model": "800X Rally",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-800x-rally-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450-rally-re-all-years",
+      "make": "KOVE",
+      "model": "450 Rally RE",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450-rally-re-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450-rally-ex-all-years",
+      "make": "KOVE",
+      "model": "450 Rally EX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450-rally-ex-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450-rr-all-years",
+      "make": "KOVE",
+      "model": "450 RR",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450-rr-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-350-rr-all-years",
+      "make": "KOVE",
+      "model": "350 RR",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-350-rr-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-250-rr-all-years",
+      "make": "KOVE",
+      "model": "250 RR",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-250-rr-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450-r-all-years",
+      "make": "KOVE",
+      "model": "450 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450-r-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-350-r-all-years",
+      "make": "KOVE",
+      "model": "350 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-350-r-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-250-r-all-years",
+      "make": "KOVE",
+      "model": "250 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-250-r-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450-enduro-re-all-years",
+      "make": "KOVE",
+      "model": "450 Enduro RE",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450-enduro-re-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-mx450-cross-r-all-years",
+      "make": "KOVE",
+      "model": "MX450 Cross R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-mx450-cross-r-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-mx250r-all-years",
+      "make": "KOVE",
+      "model": "MX250R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-mx250r-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-625v-all-years",
+      "make": "KOVE",
+      "model": "625V",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-625v-all-years-lineup-source",
+          "title": "KOVE · globalny katalog modeli",
+          "url": "https://www.kovemoto.com/models",
+          "notes": "Globalny katalog producenta potwierdza nazwę modelu; nie potwierdza dostępności w Polsce, rocznika egzemplarza ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-510x-all-years",
+      "make": "KOVE",
+      "model": "510X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-510x-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-510f-all-years",
+      "make": "KOVE",
+      "model": "510F",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-510f-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-321r-all-years",
+      "make": "KOVE",
+      "model": "321R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-321r-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-125r-all-years",
+      "make": "KOVE",
+      "model": "125R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-125r-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-500f-all-years",
+      "make": "KOVE",
+      "model": "500F",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-500f-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-mx250-all-years",
+      "make": "KOVE",
+      "model": "MX250",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-mx250-all-years-lineup-source",
+          "title": "KOVE Polska · katalog importera",
+          "url": "https://kove.pl/",
+          "notes": "Katalog oficjalnego polskiego importera potwierdza nazwę modelu. Nie wskazuje rocznika konkretnego motocykla ani nastaw zawieszenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-350-rally-all-years",
+      "make": "KOVE",
+      "model": "350 Rally",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-350-rally-all-years-lineup-source",
+          "title": "KOVE · modele zaprezentowane na CIMA 2026",
+          "url": "https://www.kovemoto.com/the-world-came-to-kove-cima-2026-and-beyond",
+          "notes": "Producent wymienia model lub nowy wariant zaprezentowany na targach CIMA 2026. To wpis identyfikacyjny; rocznik produkcyjny, dostępność i nastawy wymagają potwierdzenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-650r-all-years",
+      "make": "KOVE",
+      "model": "650R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-650r-all-years-lineup-source",
+          "title": "KOVE · modele zaprezentowane na CIMA 2026",
+          "url": "https://www.kovemoto.com/the-world-came-to-kove-cima-2026-and-beyond",
+          "notes": "Producent wymienia model lub nowy wariant zaprezentowany na targach CIMA 2026. To wpis identyfikacyjny; rocznik produkcyjny, dostępność i nastawy wymagają potwierdzenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-660x-all-years",
+      "make": "KOVE",
+      "model": "660X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-660x-all-years-lineup-source",
+          "title": "KOVE · modele zaprezentowane na CIMA 2026",
+          "url": "https://www.kovemoto.com/the-world-came-to-kove-cima-2026-and-beyond",
+          "notes": "Producent wymienia model lub nowy wariant zaprezentowany na targach CIMA 2026. To wpis identyfikacyjny; rocznik produkcyjny, dostępność i nastawy wymagają potwierdzenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-250rr-electric-all-years",
+      "make": "KOVE",
+      "model": "250RR Electric",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-250rr-electric-all-years-lineup-source",
+          "title": "KOVE · modele zaprezentowane na CIMA 2026",
+          "url": "https://www.kovemoto.com/the-world-came-to-kove-cima-2026-and-beyond",
+          "notes": "Producent wymienia model lub nowy wariant zaprezentowany na targach CIMA 2026. To wpis identyfikacyjny; rocznik produkcyjny, dostępność i nastawy wymagają potwierdzenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "kove-450rr-kec-all-years",
+      "make": "KOVE",
+      "model": "450RR KEC",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "kove-450rr-kec-all-years-lineup-source",
+          "title": "KOVE · modele zaprezentowane na CIMA 2026",
+          "url": "https://www.kovemoto.com/the-world-came-to-kove-cima-2026-and-beyond",
+          "notes": "Producent wymienia model lub nowy wariant zaprezentowany na targach CIMA 2026. To wpis identyfikacyjny; rocznik produkcyjny, dostępność i nastawy wymagają potwierdzenia.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-c-all-years",
+      "make": "ZONTES",
+      "model": "125 C",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-c-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-c2-all-years",
+      "make": "ZONTES",
+      "model": "125 C2",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-c2-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-d-all-years",
+      "make": "ZONTES",
+      "model": "125 D",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-d-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-x-all-years",
+      "make": "ZONTES",
+      "model": "125 X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-x-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-z2-all-years",
+      "make": "ZONTES",
+      "model": "125 Z2",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-z2-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-d-all-years",
+      "make": "ZONTES",
+      "model": "368 D",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-d-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-e-all-years",
+      "make": "ZONTES",
+      "model": "368 E",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-e-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-g-all-years",
+      "make": "ZONTES",
+      "model": "368 G",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-g-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-g-v2-all-years",
+      "make": "ZONTES",
+      "model": "368 G V2",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-g-v2-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-703-f-all-years",
+      "make": "ZONTES",
+      "model": "703 F",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-703-f-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-703-rr-all-years",
+      "make": "ZONTES",
+      "model": "703 RR",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-703-rr-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-703-t-all-years",
+      "make": "ZONTES",
+      "model": "703 T",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-703-t-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-u1-all-years",
+      "make": "ZONTES",
+      "model": "125 U1",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-u1-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-u-all-years",
+      "make": "ZONTES",
+      "model": "125 U",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-u-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-gk-aluminium-all-years",
+      "make": "ZONTES",
+      "model": "125 GK Aluminium",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-gk-aluminium-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-gk-spoke-all-years",
+      "make": "ZONTES",
+      "model": "125 GK Spoke",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-gk-spoke-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-g1-spoke-all-years",
+      "make": "ZONTES",
+      "model": "125 G1 Spoke",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-g1-spoke-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-g1-aluminium-all-years",
+      "make": "ZONTES",
+      "model": "125 G1 Aluminium",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-g1-aluminium-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-e-all-years",
+      "make": "ZONTES",
+      "model": "125 E",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-e-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-125-m-all-years",
+      "make": "ZONTES",
+      "model": "125 M",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-125-m-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-t-all-years",
+      "make": "ZONTES",
+      "model": "350 T",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-t-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-r-all-years",
+      "make": "ZONTES",
+      "model": "350 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-r-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-v-all-years",
+      "make": "ZONTES",
+      "model": "350 V",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-v-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-x-all-years",
+      "make": "ZONTES",
+      "model": "350 X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-x-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-vx-all-years",
+      "make": "ZONTES",
+      "model": "350 VX",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-vx-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-gk-all-years",
+      "make": "ZONTES",
+      "model": "350 GK",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-gk-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-d-all-years",
+      "make": "ZONTES",
+      "model": "350 D",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-d-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-e-all-years",
+      "make": "ZONTES",
+      "model": "350 E",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-e-all-years-lineup-source",
+          "title": "Zontes Polska · katalog produktów",
+          "url": "https://zontespolska.pl/produkty",
+          "notes": "Katalog polskiego importera potwierdza nazwę modelu. Nie przypisujemy nastaw ani rocznika, jeżeli karta ich nie potwierdza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-150-x-all-years",
+      "make": "ZONTES",
+      "model": "150 X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-150-x-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-150-d-all-years",
+      "make": "ZONTES",
+      "model": "150 D",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-150-d-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-150-m-all-years",
+      "make": "ZONTES",
+      "model": "150 M",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-150-m-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-m-all-years",
+      "make": "ZONTES",
+      "model": "350 M",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-m-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-350-s-all-years",
+      "make": "ZONTES",
+      "model": "350 S",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-350-s-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-m-all-years",
+      "make": "ZONTES",
+      "model": "368 M",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-m-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-368-k-all-years",
+      "make": "ZONTES",
+      "model": "368 K",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-368-k-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-703-r-all-years",
+      "make": "ZONTES",
+      "model": "703 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-703-r-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-310-m-all-years",
+      "make": "ZONTES",
+      "model": "310 M",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-310-m-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-310-v-all-years",
+      "make": "ZONTES",
+      "model": "310 V",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-310-v-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-310-t-all-years",
+      "make": "ZONTES",
+      "model": "310 T",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-310-t-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-310-r-all-years",
+      "make": "ZONTES",
+      "model": "310 R",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-310-r-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-310-x-all-years",
+      "make": "ZONTES",
+      "model": "310 X",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-310-x-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-zt250-all-years",
+      "make": "ZONTES",
+      "model": "ZT250",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-zt250-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    },
+    {
+      "id": "zontes-tdr1z-all-years",
+      "make": "ZONTES",
+      "model": "TDR1Z",
+      "year": null,
+      "status": "unverified",
+      "notes": "Katalog marki potwierdza nazwę modelu, ale wpis nie przypisuje rocznika ani danych technicznych do Twojego egzemplarza.",
+      "sources": [
+        {
+          "id": "zontes-tdr1z-all-years-lineup-source",
+          "title": "ZONTES · globalna lista modeli producenta",
+          "url": "https://www.zontes.com/en/Products/ProductsList.aspx",
+          "notes": "Katalog globalny producenta obejmuje również wersje przeznaczone na rynek chiński. Potwierdza nazwę, nie dostępność w Polsce ani rocznik egzemplarza.",
+          "retrievedAt": "2026-10-15T18:09:20Z"
+        }
+      ],
+      "specifications": [],
+      "settings": []
+    }
+  ]
+}
